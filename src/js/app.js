@@ -32,16 +32,47 @@ function render(variables = {}) {
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
+
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
-          </ul>
+
+          
+          <h1>${variables.name ? variables.name : "Name"} ${
+    variables.lastName ? variables.lastName : "Last Name"
+  } </h1>
+
+          <h2>${variables.role ? variables.role : "Put your Role"}</h2>
+
+
+          <h3>${variables.country ? variables.country : "Country"} ${
+    variables.city ? variables.city : "City"
+  }</h3>
+  <ul class="${
+    variables.socialMediaPosition == "position-left" ? "" : "position-right"
+  }">
+
+
+
+  <li>
+  <a href="${variables.twitter}"><i class="${
+    variables.twitter == null ? "fab fa-twitter" : "fab fa-twitter-square"
+  }"></i></a>
+</li>
+<li>
+  <a href="${variables.github}"><i class="${
+    variables.github == "alexcf04" ? "fab fa-github" : "fab fa-github-square"
+  }"></i></a>
+</li>
+<li>
+  <a href="${variables.linkedin}"><i class="${
+    variables.linkedin == null ? "fab fa-linkedin" : "fab fa-linkedin-in"
+  }"></i></a>
+</li>
+<li>
+  <a href="${variables.instagram}"><i class="${
+    variables.instagram == null ? "fab fa-instagram" : "fab fa-instagram-square"
+  }"></i></a>
+</li>
+</ul>
         </div>
     `;
 }
@@ -61,8 +92,8 @@ window.onload = function() {
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: null,
-    linkedin: null,
+    github: "https://github.com/alexcf04",
+    linkedin: "https://www.linkedin.com/feed/",
     instagram: null,
     name: null,
     lastName: null,
